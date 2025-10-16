@@ -1,0 +1,9 @@
+server:
+  port: ${SERVER_PORT_EXECUTOR}
+spring:
+  application:
+    name: employee-service
+  config:
+    import:
+      - classpath:application-db.yml
+      - classpath:application-eureka-configuration.yml

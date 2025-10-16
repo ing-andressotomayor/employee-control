@@ -1,4 +1,4 @@
-package org.andres.sotomayor.employeeservice.dto.input;
+package org.andres.sotomayor.employeeservice.dto;
 
 import lombok.Data;
 
@@ -13,6 +13,7 @@ import java.io.Serializable;
 public class Employee implements Serializable {
     @Serial
     private static final long serialVersionUID = 8983907628592843589L;
+    private Long id;
     private LaboralInformation laboralInformation;
     private PersonalInformation personalInformation;
     private RemunerationInformation remunerationInformation;

@@ -1,4 +1,4 @@
-package org.andres.sotomayor.employeeservice.dto.input;
+package org.andres.sotomayor.employeeservice.dto;
 
 import lombok.Data;
 
@@ -16,6 +16,4 @@ public class RemunerationInformation implements Serializable {
     private static final long serialVersionUID = 1125268676712433917L;
     private Double grossMonthlySalary;
     private Double monthlyNetSalary;
-    private Double weeklyNetSalary;
-    private Double dailyNetSalary;
 }

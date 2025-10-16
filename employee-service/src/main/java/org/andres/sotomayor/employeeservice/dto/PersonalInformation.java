@@ -1,4 +1,4 @@
-package org.andres.sotomayor.employeeservice.dto.input;
+package org.andres.sotomayor.employeeservice.dto;
 
 import lombok.Data;
 
@@ -16,7 +16,9 @@ public class PersonalInformation implements Serializable {
     private static final long serialVersionUID = -1173301774782064784L;
     private String name;
     private String lastName;
+    private String dni;
     private String personalEmail;
+    private String personalNumberPhone;
     private Integer age;
     private LocalDate birthdate;
 }

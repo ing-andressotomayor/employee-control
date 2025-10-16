@@ -1,4 +1,4 @@
-package org.andres.sotomayor.employeeservice.dto.input;
+package org.andres.sotomayor.employeeservice.dto;
 
 import lombok.Data;
 
@@ -19,4 +19,6 @@ public class LaboralInformation implements Serializable {
     private Integer yearsOld;
     private LocalDate dateOfEntry;
     private Integer weeklyWorkingHours;
+    private String corporatePhoneNumber;
+    private String emailCorporate;
 }
