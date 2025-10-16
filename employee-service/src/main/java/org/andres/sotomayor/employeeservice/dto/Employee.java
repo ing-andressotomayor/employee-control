@@ -17,4 +17,5 @@ public class Employee implements Serializable {
     private LaboralInformation laboralInformation;
     private PersonalInformation personalInformation;
     private RemunerationInformation remunerationInformation;
+    private AdditionalRemuneration additionalRemunerationInformation;
 }
