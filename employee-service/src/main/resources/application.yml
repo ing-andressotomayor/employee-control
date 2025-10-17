@@ -1,5 +1,5 @@
 server:
-  port: ${SERVER_PORT_EXECUTOR}
+  port: 8181
 spring:
   application:
     name: employee-service

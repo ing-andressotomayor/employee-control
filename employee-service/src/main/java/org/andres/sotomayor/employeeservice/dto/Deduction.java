@@ -10,9 +10,10 @@ import java.io.Serializable;
  * employee-control
  */
 @Data
-public class AdditionalRemuneration implements Serializable {
+public class Deduction implements Serializable {
     @Serial
-    private static final long serialVersionUID = -8544821889292419804L;
-    private String remunerationName;
-    private Double remunerationPercentage;
+    private static final long serialVersionUID = 6704157595098975023L;
+    private String type;
+    private Double amount;
+    private String description;
 }

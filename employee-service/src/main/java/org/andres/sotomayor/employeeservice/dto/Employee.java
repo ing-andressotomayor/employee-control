@@ -4,6 +4,7 @@ import lombok.Data;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,7 +18,7 @@ public class Employee implements Serializable {
     private Long id;
     private LaboralInformation laboralInformation;
     private PersonalInformation personalInformation;
-    private RemunerationInformation remunerationInformation;
-    private List<Deductions> deductions;
+    private List<Remuneration> remunerations = new ArrayList<>();
+    private List<Deduction> deductions = new ArrayList<>();
 
 }

@@ -2,6 +2,8 @@ package org.andres.sotomayor.employeeservice.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.ToString;
+import org.andres.sotomayor.employeeservice.enums.State;
 
 import java.time.LocalDate;
 
@@ -18,6 +20,8 @@ public class LaboralInformationEntity {
     private Long id;
     @Column(name = "job_position")
     private String jobPosition;
+    @Column(name = "employee_number")
+    private String employeeNumber;
     @Column(name = "years_old")
     private Integer yearsOld;
     @Column(name = "date_entry")
@@ -28,8 +32,12 @@ public class LaboralInformationEntity {
     private String corporatePhoneNumber;
     @Column(name = "email_corporate")
     private String emailCorporate;
+    @Enumerated(EnumType.STRING)
+    private State state;
+    private Double netSalary;
 
-    @OneToOne(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
+    @ToString.Exclude
+    @OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "employee_id")
     private EmployeeEntity employee;
 }

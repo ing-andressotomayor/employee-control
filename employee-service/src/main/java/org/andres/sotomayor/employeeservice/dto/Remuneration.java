@@ -12,10 +12,10 @@ import java.util.List;
  */
 
 @Data
-public class RemunerationInformation implements Serializable {
+public class Remuneration implements Serializable {
     @Serial
     private static final long serialVersionUID = 1125268676712433917L;
-    private Double grossMonthlySalary;
-    private Double monthlyNetSalary;
-    private List<AdditionalRemuneration> additionalRemunerationInformation;
+    private String type;
+    private Double amount;
+    private String description;
 }

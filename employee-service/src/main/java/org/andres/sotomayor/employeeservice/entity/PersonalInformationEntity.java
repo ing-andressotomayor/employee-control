@@ -2,6 +2,7 @@ package org.andres.sotomayor.employeeservice.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.ToString;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -27,8 +28,10 @@ public class PersonalInformationEntity {
     @Column(name = "personal_number_phone")
     private String personalNumberPhone;
     private Integer age;
+    @Column(name = "brith_date")
     private LocalDate birthDate;
 
+    @ToString.Exclude
     @OneToOne(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
     @JoinColumn(name = "employee_id")
     private EmployeeEntity employee;

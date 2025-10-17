@@ -2,9 +2,8 @@ package org.andres.sotomayor.employeeservice.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.ToString;
 
-import java.io.Serial;
-import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -14,15 +13,15 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "deductions")
-public class DeductionsEntity {
+public class DeductionEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Integer absences;
-    private Integer delays;
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.MERGE)
+    private String type;
+    private Double amount;
+    private String description;
+    @ToString.Exclude
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "employee_id")
     private EmployeeEntity employee;
-    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "deductions")
-    private List<TaxesEntity> taxes;
 }
