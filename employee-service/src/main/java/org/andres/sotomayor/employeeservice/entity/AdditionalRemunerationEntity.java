@@ -19,8 +19,8 @@ public class AdditionalRemunerationEntity {
     private Long id;
     @Column(name = "remuneration_name")
     private String remunerationName;
-    @Column(name = "remuneration_amount")
-    private String remunerationAmount;
+    @Column(name = "remuneration_percentage")
+    private Double remunerationPercentage;
 
     @ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
     @JoinColumn(name = "remuneration_information_id")

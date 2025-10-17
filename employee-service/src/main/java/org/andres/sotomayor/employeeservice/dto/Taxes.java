@@ -14,5 +14,5 @@ public class Taxes implements Serializable {
     @Serial
     private static final long serialVersionUID = 5997361951930292287L;
     private String taxName;
-    private String taxAmount;
+    private Double taxPercentage;
 }

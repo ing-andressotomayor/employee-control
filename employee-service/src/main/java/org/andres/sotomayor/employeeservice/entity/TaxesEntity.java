@@ -19,8 +19,8 @@ public class TaxesEntity {
     private Long id;
     @Column(name = "tax_name")
     private String taxName;
-    @Column(name = "tax_amount")
-    private String taxAmount;
+    @Column(name = "tax_percentage")
+    private Double taxPercentage;
 
     @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.MERGE)
     @JoinColumn(name = "deductions_id")

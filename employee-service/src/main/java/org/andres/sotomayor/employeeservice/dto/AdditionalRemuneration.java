@@ -14,5 +14,5 @@ public class AdditionalRemuneration implements Serializable {
     @Serial
     private static final long serialVersionUID = -8544821889292419804L;
     private String remunerationName;
-    private String remunerationAmount;
+    private Double remunerationPercentage;
 }

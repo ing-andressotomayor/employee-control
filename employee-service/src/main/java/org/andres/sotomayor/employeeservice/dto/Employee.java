@@ -4,6 +4,7 @@ import lombok.Data;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by Andrés Sotomayor Venegas on 15/10/2025.
@@ -17,5 +18,6 @@ public class Employee implements Serializable {
     private LaboralInformation laboralInformation;
     private PersonalInformation personalInformation;
     private RemunerationInformation remunerationInformation;
-    private AdditionalRemuneration additionalRemunerationInformation;
+    private List<Deductions> deductions;
+
 }

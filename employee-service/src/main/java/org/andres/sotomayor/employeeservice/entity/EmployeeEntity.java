@@ -3,6 +3,8 @@ package org.andres.sotomayor.employeeservice.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * Created by Andrés Sotomayor Venegas on 15/10/2025.
  * employee-control
@@ -22,4 +24,6 @@ public class EmployeeEntity {
     private PersonalInformationEntity personalInformation;
     @OneToOne(cascade = CascadeType.REMOVE, mappedBy = "employee", fetch = FetchType.EAGER)
     private RemunerationInformationEntity remunerationInformation;
+    @OneToMany(cascade = CascadeType.REMOVE,mappedBy = "employee")
+    private List<DeductionsEntity> deductions;
 }

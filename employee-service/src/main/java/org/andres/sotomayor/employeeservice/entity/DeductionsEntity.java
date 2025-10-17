@@ -20,7 +20,9 @@ public class DeductionsEntity {
     private Long id;
     private Integer absences;
     private Integer delays;
-
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.MERGE)
+    @JoinColumn(name = "employee_id")
+    private EmployeeEntity employee;
     @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "deductions")
     private List<TaxesEntity> taxes;
 }

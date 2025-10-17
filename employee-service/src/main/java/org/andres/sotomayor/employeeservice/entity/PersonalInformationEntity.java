@@ -27,7 +27,7 @@ public class PersonalInformationEntity {
     @Column(name = "personal_number_phone")
     private String personalNumberPhone;
     private Integer age;
-    private LocalDate birthdate;
+    private LocalDate birthDate;
 
     @OneToOne(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
     @JoinColumn(name = "employee_id")

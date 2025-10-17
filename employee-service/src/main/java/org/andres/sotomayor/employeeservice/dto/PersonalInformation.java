@@ -20,5 +20,5 @@ public class PersonalInformation implements Serializable {
     private String personalEmail;
     private String personalNumberPhone;
     private Integer age;
-    private LocalDate birthdate;
+    private LocalDate birthDate;
 }
