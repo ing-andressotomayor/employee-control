@@ -16,5 +16,6 @@ public interface EmployeeMapper {
 
     @Mapping(target = "id",ignore = true)
     EmployeeEntity employeeToEmployeeEntity(Employee employee);
+
     Employee employeeEntityToEmployee(EmployeeEntity employeeEntity);
 }

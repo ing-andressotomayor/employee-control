@@ -1,5 +1,6 @@
 package org.andres.sotomayor.employeeservice.dto;
 
+import jakarta.validation.Valid;
 import lombok.Data;
 
 import java.io.Serial;
@@ -16,9 +17,13 @@ public class Employee implements Serializable {
     @Serial
     private static final long serialVersionUID = 8983907628592843589L;
     private Long id;
+    @Valid
     private LaboralInformation laboralInformation;
+    @Valid
     private PersonalInformation personalInformation;
+    @Valid
     private List<Remuneration> remunerations = new ArrayList<>();
+    @Valid
     private List<Deduction> deductions = new ArrayList<>();
 
 }
