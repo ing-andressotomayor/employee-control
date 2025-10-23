@@ -1,6 +1,8 @@
 package org.andres.sotomayor.employeeservice.dto;
 
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 import java.io.Serial;
@@ -17,13 +19,23 @@ public class Employee implements Serializable {
     @Serial
     private static final long serialVersionUID = 8983907628592843589L;
     private Long id;
+
     @Valid
+    @NotNull(message = "{validation.message.null}")
     private LaboralInformation laboralInformation;
+
     @Valid
+    @NotNull(message = "{validation.message.null}")
     private PersonalInformation personalInformation;
+
     @Valid
+    @NotNull(message = "{validation.message.null}")
+    @Size(min = 1,message = "{validation.message.size.collections}")
     private List<Remuneration> remunerations = new ArrayList<>();
+
     @Valid
+    @NotNull(message = "{validation.message.null}")
+    @Size(min = 1,message = "{validation.message.size.collections}")
     private List<Deduction> deductions = new ArrayList<>();
 
 }

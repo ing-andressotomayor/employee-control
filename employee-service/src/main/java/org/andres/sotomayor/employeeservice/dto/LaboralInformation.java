@@ -24,11 +24,6 @@ public class LaboralInformation implements Serializable {
 
     private String employeeNumber;
 
-    @Min(value = 18, message = "{validation.message.min.years.old}")
-    @Max(value = 60, message = "{validation.message.max.years.old}")
-    @NotNull(message = "{validation.message.null}")
-    private Integer yearsOld;
-
     @PastOrPresent(message = "{validation.message.past.present}")
     @NotNull
     private LocalDate dateOfEntry;
