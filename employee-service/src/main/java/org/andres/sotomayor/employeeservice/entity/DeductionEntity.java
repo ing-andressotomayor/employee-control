@@ -18,7 +18,7 @@ public class DeductionEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String type;
-    private Double amount;
+    private Double percentage;
     private String description;
     @ToString.Exclude
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)

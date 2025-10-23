@@ -12,7 +12,7 @@ import lombok.ToString;
 @Data
 @Entity
 @Table(name = "remuneration_information")
-public class RemunerationEntity {
+public class GrossMonthlyCompensationEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

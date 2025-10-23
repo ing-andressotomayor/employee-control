@@ -19,10 +19,11 @@ public class Deduction implements Serializable {
     @NotBlank(message = "{validation.message.blank}")
     private String type;
 
-    @Digits(integer = 10,fraction = 2, message = "{validation.message.digits}")
+    @Digits(integer = 2,fraction = 2, message = "{validation.message.digits}")
     @NotNull(message = "{validation.message.null}")
-    @Positive(message = "{validation.message.positive}")
-    private Double amount;
+    @DecimalMin(value = "1.00",message = "{validation.message.decimal.min}")
+    @DecimalMax(value = "60.00", message = "{validation.message.decimal.max}")
+    private Double percentage;
 
     @Size(min = 1,max = 50, message = "{validation.message.descriptions}")
     @NotBlank(message = "{validation.message.blank}")
