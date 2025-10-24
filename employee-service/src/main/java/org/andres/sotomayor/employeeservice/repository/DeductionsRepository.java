@@ -1,6 +1,6 @@
-package org.andres.sotomayor.employeeservice.jpa;
+package org.andres.sotomayor.employeeservice.repository;
 
-import org.andres.sotomayor.employeeservice.entity.DeductionEntity;
+import org.andres.sotomayor.employeeservice.model.DeductionEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

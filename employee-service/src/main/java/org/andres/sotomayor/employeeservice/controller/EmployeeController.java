@@ -2,6 +2,10 @@ package org.andres.sotomayor.employeeservice.controller;
 
 import jakarta.validation.Valid;
 import org.andres.sotomayor.employeeservice.dto.Employee;
+import org.andres.sotomayor.employeeservice.mapper.EmployeeMapper;
+import org.andres.sotomayor.employeeservice.model.EmployeeEntity;
+import org.andres.sotomayor.employeeservice.service.IEmployeeService;
+import org.mapstruct.factory.Mappers;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,9 +17,15 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "api/employee")
 public class EmployeeController {
 
+    private final IEmployeeService employeeService;
+
+    public EmployeeController(IEmployeeService employeeService) {
+        this.employeeService = employeeService;
+    }
+
     @PostMapping("create")
     public ResponseEntity<Employee> create(@Valid @RequestBody Employee employee) {
-        return null;
+        return ResponseEntity.ok(employeeService.create(employee));
     }
 
     @GetMapping("search-matches-by-name")

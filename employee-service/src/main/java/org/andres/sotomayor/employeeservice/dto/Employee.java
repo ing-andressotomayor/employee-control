@@ -31,7 +31,7 @@ public class Employee implements Serializable {
     @Valid
     @NotNull(message = "{validation.message.null}")
     @Size(min = 1,message = "{validation.message.size.collections}")
-    private List<GrossMonthlyCompensation> grossMonthlyCompensations = new ArrayList<>();
+    private List<Compensation> compensations = new ArrayList<>();
 
     @Valid
     @NotNull(message = "{validation.message.null}")

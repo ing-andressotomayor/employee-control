@@ -1,4 +1,4 @@
-package org.andres.sotomayor.employeeservice.entity;
+package org.andres.sotomayor.employeeservice.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -22,8 +22,6 @@ public class LaboralInformationEntity {
     private String jobPosition;
     @Column(name = "employee_number")
     private String employeeNumber;
-    @Column(name = "years_old")
-    private Integer yearsOld;
     @Column(name = "date_entry")
     private LocalDate dateOfEntry;
     @Column(name = "weekly_working_hours")

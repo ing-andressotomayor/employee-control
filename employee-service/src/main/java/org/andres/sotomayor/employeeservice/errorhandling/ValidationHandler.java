@@ -1,4 +1,4 @@
-package org.andres.sotomayor.employeeservice.validation;
+package org.andres.sotomayor.employeeservice.errorhandling;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;

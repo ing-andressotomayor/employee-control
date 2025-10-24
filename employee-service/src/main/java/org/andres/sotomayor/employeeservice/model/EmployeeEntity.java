@@ -1,4 +1,4 @@
-package org.andres.sotomayor.employeeservice.entity;
+package org.andres.sotomayor.employeeservice.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -25,8 +25,8 @@ public class EmployeeEntity {
     private PersonalInformationEntity personalInformation;
 
     @OneToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST}, mappedBy = "employee", fetch = FetchType.EAGER)
-    private List<GrossMonthlyCompensationEntity> grossMonthlyCompensation = new ArrayList<>();
+    private List<CompensationEntity> compensations = new ArrayList<>();
 
-    @OneToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST}, mappedBy = "employee")
+    @OneToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST}, mappedBy = "employee",fetch = FetchType.EAGER)
     private List<DeductionEntity> deductions = new ArrayList<>();
 }

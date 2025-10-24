@@ -1,8 +1,8 @@
-package org.andres.sotomayor.employeeservice.business;
+package org.andres.sotomayor.employeeservice.service;
 
+import org.andres.sotomayor.employeeservice.dto.Compensation;
 import org.andres.sotomayor.employeeservice.dto.Deduction;
 import org.andres.sotomayor.employeeservice.dto.Employee;
-import org.andres.sotomayor.employeeservice.dto.GrossMonthlyCompensation;
 import org.springframework.stereotype.Service;
 
 import java.text.DecimalFormat;
@@ -11,7 +11,7 @@ import java.time.Period;
 import java.util.UUID;
 
 @Service
-public class EmployeeData {
+public class EmployeeServiceUtils {
 
     private void validateAge(LocalDate age) {
         if (Period.between(age, LocalDate.now()).getYears() < 18)
@@ -30,8 +30,8 @@ public class EmployeeData {
         double totalGrossSalary = 0.0;
 
 
-        for (GrossMonthlyCompensation remuneration : employeeResult.getGrossMonthlyCompensations()) {
-            totalGrossSalary += remuneration.getAmount();
+        for (Compensation compensation : employeeResult.getCompensations()) {
+            totalGrossSalary += compensation.getAmount();
         }
 
         for (Deduction deduction : employeeResult.getDeductions()) {
@@ -40,4 +40,6 @@ public class EmployeeData {
         employeeResult.getLaboralInformation().setNetSalary(Double.parseDouble(new DecimalFormat("#.00").format(totalGrossSalary)));
         return employeeResult;
     }
+
+
 }

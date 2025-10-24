@@ -1,11 +1,9 @@
-package org.andres.sotomayor.employeeservice.entity;
+package org.andres.sotomayor.employeeservice.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.ToString;
 
-import java.io.Serial;
-import java.io.Serializable;
 import java.time.LocalDate;
 
 /**

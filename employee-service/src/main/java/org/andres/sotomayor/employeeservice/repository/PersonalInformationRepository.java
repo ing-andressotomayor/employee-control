@@ -1,6 +1,6 @@
-package org.andres.sotomayor.employeeservice.jpa;
+package org.andres.sotomayor.employeeservice.repository;
 
-import org.andres.sotomayor.employeeservice.entity.PersonalInformationEntity;
+import org.andres.sotomayor.employeeservice.model.PersonalInformationEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

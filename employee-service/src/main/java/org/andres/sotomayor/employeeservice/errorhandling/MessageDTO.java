@@ -1,4 +1,4 @@
-package org.andres.sotomayor.employeeservice.validation;
+package org.andres.sotomayor.employeeservice.errorhandling;
 
 import lombok.Builder;
 import lombok.Data;
