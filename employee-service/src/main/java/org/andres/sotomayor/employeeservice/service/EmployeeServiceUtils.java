@@ -40,6 +40,4 @@ public class EmployeeServiceUtils {
         employeeResult.getLaboralInformation().setNetSalary(Double.parseDouble(new DecimalFormat("#.00").format(totalGrossSalary)));
         return employeeResult;
     }
-
-
 }

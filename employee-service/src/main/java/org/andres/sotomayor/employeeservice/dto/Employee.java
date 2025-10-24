@@ -4,6 +4,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
+import org.springframework.data.domain.Page;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -30,12 +31,12 @@ public class Employee implements Serializable {
 
     @Valid
     @NotNull(message = "{validation.message.null}")
-    @Size(min = 1,message = "{validation.message.size.collections}")
+    @Size(min = 1, message = "{validation.message.size.collections}")
     private List<Compensation> compensations = new ArrayList<>();
 
     @Valid
     @NotNull(message = "{validation.message.null}")
-    @Size(min = 1,message = "{validation.message.size.collections}")
+    @Size(min = 1, message = "{validation.message.size.collections}")
     private List<Deduction> deductions = new ArrayList<>();
 
 }

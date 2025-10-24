@@ -1,14 +1,13 @@
 package org.andres.sotomayor.employeeservice.service;
 
 import org.andres.sotomayor.employeeservice.dto.Employee;
-import org.springframework.data.domain.Page;
+import org.andres.sotomayor.employeeservice.dto.EmployeePage;
+
 
 public interface IEmployeeService {
     public Employee create(  Employee employee);
 
-    public Page<Employee> findByAllByName(String name,int pageSize, int pageNumber);
-
-    public Employee findById(Long id);
+    public EmployeePage findByAllByName(String name, int pageSize, int pageNumber);
 
     public Employee findByEmployeeNumber(String employeeNumber);
 

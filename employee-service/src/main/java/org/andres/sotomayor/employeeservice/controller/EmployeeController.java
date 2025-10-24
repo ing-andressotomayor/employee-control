@@ -2,12 +2,12 @@ package org.andres.sotomayor.employeeservice.controller;
 
 import jakarta.validation.Valid;
 import org.andres.sotomayor.employeeservice.dto.Employee;
-import org.andres.sotomayor.employeeservice.mapper.EmployeeMapper;
-import org.andres.sotomayor.employeeservice.model.EmployeeEntity;
+import org.andres.sotomayor.employeeservice.dto.EmployeePage;
 import org.andres.sotomayor.employeeservice.service.IEmployeeService;
-import org.mapstruct.factory.Mappers;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * Created by Andrés Sotomayor Venegas on 17/10/2025.
@@ -29,8 +29,8 @@ public class EmployeeController {
     }
 
     @GetMapping("search-matches-by-name")
-    public ResponseEntity<Employee> findByName(@RequestParam String name) {
-        return null;
+    public ResponseEntity<EmployeePage> findByName(@RequestParam String name, @RequestParam int pageSize, @RequestParam int pageNumber) {
+        return ResponseEntity.ok(employeeService.findByAllByName(name,pageSize,pageNumber));
     }
 
     @GetMapping("find-by-id")

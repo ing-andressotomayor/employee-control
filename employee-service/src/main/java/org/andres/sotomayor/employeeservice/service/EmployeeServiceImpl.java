@@ -1,11 +1,15 @@
 package org.andres.sotomayor.employeeservice.service;
 
 import org.andres.sotomayor.employeeservice.dto.Employee;
+import org.andres.sotomayor.employeeservice.dto.EmployeePage;
 import org.andres.sotomayor.employeeservice.mapper.EmployeeMapper;
 import org.andres.sotomayor.employeeservice.model.EmployeeEntity;
 import org.andres.sotomayor.employeeservice.repository.*;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class EmployeeServiceImpl implements IEmployeeService {
@@ -37,14 +41,16 @@ public class EmployeeServiceImpl implements IEmployeeService {
     }
 
     @Override
-    public Page<Employee> findByAllByName(String name, int pageSize, int pageNumber) {
-
-        return null;
-    }
-
-    @Override
-    public Employee findById(Long id) {
-        return null;
+    public EmployeePage findByAllByName(String name, int pageSize, int pageNumber) {
+        Page<EmployeeEntity> employeeEntities = employeeRepository.findByPersonalInformationNameContaining(name, PageRequest.of(pageNumber, pageSize));
+        List<Employee> employees = employeeEntities.getContent().stream().map(employeeMapper::employeeEntityToEmployee).toList();
+        return EmployeePage.builder()
+                .employeeList(employees)
+                .hasNextPage(employeeEntities.hasNext())
+                .hasPreviousPage(employeeEntities.hasPrevious())
+                .totalElements(employeeEntities.getTotalElements())
+                .totalPages(employeeEntities.getTotalPages())
+                .build();
     }
 
     @Override
