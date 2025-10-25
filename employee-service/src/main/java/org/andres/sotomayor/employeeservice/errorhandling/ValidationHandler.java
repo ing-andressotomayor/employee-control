@@ -1,5 +1,6 @@
 package org.andres.sotomayor.employeeservice.errorhandling;
 
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -18,5 +19,10 @@ public class ValidationHandler {
                     .build()
         ).toList();
          return ResponseEntity.badRequest().body(messages);
+    }
+
+    @ExceptionHandler(EntityNotFoundException.class)
+    public ResponseEntity<Void> entityNotFoundException(EntityNotFoundException e) {
+        return ResponseEntity.notFound().build();
     }
 }

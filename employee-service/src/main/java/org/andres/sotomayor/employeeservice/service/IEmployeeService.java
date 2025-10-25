@@ -5,11 +5,12 @@ import org.andres.sotomayor.employeeservice.dto.EmployeePage;
 
 
 public interface IEmployeeService {
-    public Employee create(  Employee employee);
+    Employee create(Employee employee);
 
-    public EmployeePage findByAllByName(String name, int pageSize, int pageNumber);
+    EmployeePage findByAllByName(String name, int pageSize, int pageNumber);
 
-    public Employee findByEmployeeNumber(String employeeNumber);
+    Employee findByEmployeeNumber(String employeeNumber);
 
-    public Employee deleteByEmployeeNumber(String employeeNumber);
+    void deleteByEmployeeNumber(String employeeNumber);
+    Employee updateByEmployeeNumber(String employeeNumber,Employee employee);
 }

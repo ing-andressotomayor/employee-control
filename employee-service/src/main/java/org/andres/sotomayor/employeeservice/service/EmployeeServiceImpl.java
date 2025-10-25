@@ -1,10 +1,12 @@
 package org.andres.sotomayor.employeeservice.service;
 
+import jakarta.persistence.EntityNotFoundException;
 import org.andres.sotomayor.employeeservice.dto.Employee;
 import org.andres.sotomayor.employeeservice.dto.EmployeePage;
 import org.andres.sotomayor.employeeservice.mapper.EmployeeMapper;
 import org.andres.sotomayor.employeeservice.model.EmployeeEntity;
 import org.andres.sotomayor.employeeservice.repository.*;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,8 @@ import java.util.List;
 @Service
 public class EmployeeServiceImpl implements IEmployeeService {
 
+    @Value("${validation.message.resource.not.found }")
+    private String errorMessage;
     private final EmployeeServiceUtils employeeServiceUtils;
     private final EmployeeRepository employeeRepository;
     private final EmployeeMapper employeeMapper;
@@ -44,6 +48,8 @@ public class EmployeeServiceImpl implements IEmployeeService {
     public EmployeePage findByAllByName(String name, int pageSize, int pageNumber) {
         Page<EmployeeEntity> employeeEntities = employeeRepository.findByPersonalInformationNameContaining(name, PageRequest.of(pageNumber, pageSize));
         List<Employee> employees = employeeEntities.getContent().stream().map(employeeMapper::employeeEntityToEmployee).toList();
+        if (employeeEntities.getTotalElements() == 0)
+            throw new EntityNotFoundException(errorMessage);
         return EmployeePage.builder()
                 .employeeList(employees)
                 .hasNextPage(employeeEntities.hasNext())
@@ -55,11 +61,25 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
     @Override
     public Employee findByEmployeeNumber(String employeeNumber) {
-        return null;
+        EmployeeEntity employeeResult = employeeRepository.findByLaboralInformationEmployeeNumber(employeeNumber).orElseThrow(() -> new EntityNotFoundException(errorMessage));
+        return employeeMapper.employeeEntityToEmployee(employeeResult);
     }
 
     @Override
-    public Employee deleteByEmployeeNumber(String employeeNumber) {
-        return null;
+    public void deleteByEmployeeNumber(String employeeNumber) {
+        EmployeeEntity entity = employeeRepository.findByLaboralInformationEmployeeNumber(employeeNumber).orElseThrow(() -> new EntityNotFoundException(errorMessage));
+        employeeRepository.delete(entity);
     }
+
+    @Override
+    public Employee updateByEmployeeNumber(String employeeNumber, Employee employee) {
+        EmployeeEntity employeeEntity = employeeRepository.findByLaboralInformationEmployeeNumber(employeeNumber).orElseThrow(() -> new EntityNotFoundException(errorMessage));
+        EmployeeEntity employeeResult = employeeMapper.employeeToEmployeeEntity(employee);
+        employeeEntity.setLaboralInformation(employeeResult.getLaboralInformation());
+        employeeEntity.setPersonalInformation(employeeResult.getPersonalInformation());
+        employeeEntity.setDeductions(employeeResult.getDeductions());
+        employeeEntity.setCompensations(employeeResult.getCompensations());
+        return employeeMapper.employeeEntityToEmployee(employeeRepository.save(employeeEntity));
+    }
+
 }
