@@ -3,7 +3,6 @@ package org.andres.sotomayor.employeeservice.dto;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.Data;
-import org.andres.sotomayor.employeeservice.enums.State;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -40,9 +39,6 @@ public class LaboralInformation implements Serializable {
     @Email(message = "{validation.message.email}")
     @NotNull(message = "{validation.message.null}")
     private String emailCorporate;
-
-    @Enumerated(EnumType.STRING)
-    private State state;
 
     @Digits(integer = 10, fraction = 2, message = "{validation.message.digits}")
     @Positive(message = "{validation.message.positive}")

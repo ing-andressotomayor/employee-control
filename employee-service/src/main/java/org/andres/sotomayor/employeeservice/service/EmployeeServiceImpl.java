@@ -16,8 +16,6 @@ import java.util.List;
 @Service
 public class EmployeeServiceImpl implements IEmployeeService {
 
-    @Value("${validation.message.resource.not.found }")
-    private String errorMessage;
     private final EmployeeServiceUtils employeeServiceUtils;
     private final EmployeeRepository employeeRepository;
     private final EmployeeMapper employeeMapper;
@@ -49,7 +47,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
         Page<EmployeeEntity> employeeEntities = employeeRepository.findByPersonalInformationNameContaining(name, PageRequest.of(pageNumber, pageSize));
         List<Employee> employees = employeeEntities.getContent().stream().map(employeeMapper::employeeEntityToEmployee).toList();
         if (employeeEntities.getTotalElements() == 0)
-            throw new EntityNotFoundException(errorMessage);
+            throw new EntityNotFoundException("{validation.message.resource.not.found}");
         return EmployeePage.builder()
                 .employeeList(employees)
                 .hasNextPage(employeeEntities.hasNext())
@@ -61,19 +59,19 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
     @Override
     public Employee findByEmployeeNumber(String employeeNumber) {
-        EmployeeEntity employeeResult = employeeRepository.findByLaboralInformationEmployeeNumber(employeeNumber).orElseThrow(() -> new EntityNotFoundException(errorMessage));
+        EmployeeEntity employeeResult = employeeRepository.findByLaboralInformationEmployeeNumber(employeeNumber).orElseThrow(() -> new EntityNotFoundException("{validation.message.resource.not.found}"));
         return employeeMapper.employeeEntityToEmployee(employeeResult);
     }
 
     @Override
     public void deleteByEmployeeNumber(String employeeNumber) {
-        EmployeeEntity entity = employeeRepository.findByLaboralInformationEmployeeNumber(employeeNumber).orElseThrow(() -> new EntityNotFoundException(errorMessage));
+        EmployeeEntity entity = employeeRepository.findByLaboralInformationEmployeeNumber(employeeNumber).orElseThrow(() -> new EntityNotFoundException("{validation.message.resource.not.found}"));
         employeeRepository.delete(entity);
     }
 
     @Override
     public Employee updateByEmployeeNumber(String employeeNumber, Employee employee) {
-        EmployeeEntity employeeEntity = employeeRepository.findByLaboralInformationEmployeeNumber(employeeNumber).orElseThrow(() -> new EntityNotFoundException(errorMessage));
+        EmployeeEntity employeeEntity = employeeRepository.findByLaboralInformationEmployeeNumber(employeeNumber).orElseThrow(() -> new EntityNotFoundException("{validation.message.resource.not.found}"));
         EmployeeEntity employeeResult = employeeMapper.employeeToEmployeeEntity(employee);
         employeeEntity.setLaboralInformation(employeeResult.getLaboralInformation());
         employeeEntity.setPersonalInformation(employeeResult.getPersonalInformation());

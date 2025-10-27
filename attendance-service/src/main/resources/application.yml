@@ -1,0 +1,7 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: attendance-service
+  config:
+    import: classpath:application-eureka-configuration.yml

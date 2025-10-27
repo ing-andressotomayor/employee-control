@@ -3,7 +3,6 @@ package org.andres.sotomayor.employeeservice.model;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.ToString;
-import org.andres.sotomayor.employeeservice.enums.State;
 
 import java.time.LocalDate;
 
@@ -30,8 +29,7 @@ public class LaboralInformationEntity {
     private String corporatePhoneNumber;
     @Column(name = "email_corporate")
     private String emailCorporate;
-    @Enumerated(EnumType.STRING)
-    private State state;
+    @Column(name = "net_salary")
     private Double netSalary;
 
     @ToString.Exclude
